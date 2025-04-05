@@ -4,5 +4,7 @@ namespace FullstackTest.Api.Services;
 
 public interface IAuthService
 {
-    Task<bool> RegisterAsync(RegisterUserRequest request);
+    Task<AuthResponse?> AuthenticateAsync(LoginRequest request);
+
+    Task<string?> RegisterAsync(RegisterUserRequest request);
 }
