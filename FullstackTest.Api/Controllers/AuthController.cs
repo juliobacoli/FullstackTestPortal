@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FullstackTest.Api.Controllers;
 
-//[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class AuthController : ControllerBase
@@ -15,11 +14,17 @@ public class AuthController : ControllerBase
     private readonly IAuthService _authService;
     private readonly ApplicationDbContext _context;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, ApplicationDbContext context)
     {
         _authService = authService;
+        _context = context;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost("signup")]
     public async Task<IActionResult> SignUp([FromBody] RegisterUserRequest request)
     {
@@ -41,7 +46,11 @@ public class AuthController : ControllerBase
         return Ok(response);
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost("signin")]
     public async Task<IActionResult> SignIn([FromBody] LoginRequest request)
     {
