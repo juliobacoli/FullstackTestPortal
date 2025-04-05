@@ -1,4 +1,5 @@
-﻿using FullstackTest.Api.DTOs;
+﻿using FullstackTest.Api.DTOs.Request;
+using FullstackTest.Api.DTOs.Response;
 
 namespace FullstackTest.Api.Services.Interfaces;
 

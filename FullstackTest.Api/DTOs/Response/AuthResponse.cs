@@ -1,4 +1,4 @@
-﻿namespace FullstackTest.Api.DTOs;
+﻿namespace FullstackTest.Api.DTOs.Response;
 
 public class AuthResponse
 {

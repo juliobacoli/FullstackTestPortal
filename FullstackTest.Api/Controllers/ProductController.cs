@@ -1,4 +1,4 @@
-﻿using FullstackTest.Api.DTOs;
+﻿using FullstackTest.Api.DTOs.Request;
 using FullstackTest.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,6 @@
 ﻿using FullstackTest.Api.Data;
-using FullstackTest.Api.DTOs;
+using FullstackTest.Api.DTOs.Request;
+using FullstackTest.Api.DTOs.Response;
 using FullstackTest.Api.Models;
 using FullstackTest.Api.Services.Interfaces;
 
