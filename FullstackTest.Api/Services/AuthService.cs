@@ -1,6 +1,7 @@
 ﻿using FullstackTest.Api.Data;
 using FullstackTest.Api.DTOs;
 using FullstackTest.Api.Models;
+using FullstackTest.Api.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

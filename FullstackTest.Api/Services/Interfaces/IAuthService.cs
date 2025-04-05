@@ -1,6 +1,6 @@
 ﻿using FullstackTest.Api.DTOs;
 
-namespace FullstackTest.Api.Services;
+namespace FullstackTest.Api.Services.Interfaces;
 
 public interface IAuthService
 {
