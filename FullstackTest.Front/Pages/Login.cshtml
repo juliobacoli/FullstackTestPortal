@@ -1,0 +1,24 @@
+﻿@page
+@model FullstackTest.Front.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="post">
+    <div>
+        <label>Usuário ou E-mail:</label>
+        <input asp-for="LoginRequest.UsernameOrEmail" />
+    </div>
+    <div>
+        <label>Senha:</label>
+        <input asp-for="LoginRequest.Password" type="password" />
+    </div>
+    <button type="submit">Entrar</button>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <p style="color:red">@Model.ErrorMessage</p>
+    }
+</form>
