@@ -43,11 +43,18 @@ public class LoginModel : PageModel
 
         var responseContent = await response.Content.ReadAsStringAsync();
 
-        var result = JsonSerializer.Deserialize<AuthResponse>(
-            responseContent,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        using var doc = JsonDocument.Parse(responseContent);
+        var root = doc.RootElement.GetProperty("token");
 
-        TempData["Token"] = result?.Token;
+        var result = new AuthResponse
+        {
+            Token = root.GetProperty("token").GetString(),
+            Username = root.GetProperty("username").GetString(),
+            UserId = root.GetProperty("userId").GetGuid()
+        };
+
+        HttpContext.Session.SetString("Token", result.Token);
+        //TempData["Token"] = result?.Token;
 
         return RedirectToPage("/Index");
     }

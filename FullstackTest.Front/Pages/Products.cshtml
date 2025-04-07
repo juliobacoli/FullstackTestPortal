@@ -4,9 +4,10 @@
     ViewData["Title"] = "Produtos";
 }
 
-<h2>Cadastro de Produto</h2>
+<h2>@(Model.ProductRequest.Id == Guid.Empty ? "Cadastro de Produto" : "Editar Produto")</h2>
 
 <form method="post">
+    <input type="hidden" asp-for="ProductRequest.Id" />
     <div>
         <label>Nome:</label>
         <input asp-for="ProductRequest.Name" />
@@ -19,7 +20,7 @@
         <label>Preço:</label>
         <input asp-for="ProductRequest.Price" type="number" step="0.01" />
     </div>
-    <button type="submit">Salvar</button>
+    <button type="submit">@(Model.ProductRequest.Id == Guid.Empty ? "Salvar" : "Atualizar")</button>
 </form>
 
 <hr />
@@ -43,11 +44,14 @@
                 <td>@product.Description</td>
                 <td>@product.Price.ToString("C")</td>
                 <td>
-                    <form method="post" asp-page-handler="Delete">
+                    <form method="post" asp-page-handler="Edit" style="display:inline;">
+                        <input type="hidden" name="id" value="@product.Id" />
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form method="post" asp-page-handler="Delete" style="display:inline; margin-left:5px;">
                         <input type="hidden" name="id" value="@product.Id" />
                         <button type="submit">Excluir</button>
                     </form>
-
                 </td>
             </tr>
         }

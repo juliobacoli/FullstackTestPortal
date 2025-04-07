@@ -25,7 +25,8 @@ public class ProductsModel : PageModel
 
     public async Task OnGetAsync()
     {
-        var token = TempData["Token"]?.ToString();
+        var token = HttpContext.Session.GetString("Token");
+        //var token = TempData["Token"]?.ToString();
         if (string.IsNullOrEmpty(token)) return;
 
         var client = _httpClientFactory.CreateClient();
@@ -46,7 +47,8 @@ public class ProductsModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var token = TempData["Token"]?.ToString();
+        var token = HttpContext.Session.GetString("Token");
+
         if (string.IsNullOrEmpty(token)) return RedirectToPage("/Login");
 
         var client = _httpClientFactory.CreateClient();
@@ -66,7 +68,8 @@ public class ProductsModel : PageModel
 
     public async Task<IActionResult> OnPostDeleteAsync(Guid id)
     {
-        var token = TempData["Token"]?.ToString();
+        var token = HttpContext.Session.GetString("Token");
+
         if (string.IsNullOrEmpty(token)) return RedirectToPage("/Login");
 
         var client = _httpClientFactory.CreateClient();
