@@ -1,0 +1,55 @@
+﻿@page
+@model FullstackTest.Front.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<h2>Cadastro de Produto</h2>
+
+<form method="post">
+    <div>
+        <label>Nome:</label>
+        <input asp-for="ProductRequest.Name" />
+    </div>
+    <div>
+        <label>Descrição:</label>
+        <input asp-for="ProductRequest.Description" />
+    </div>
+    <div>
+        <label>Preço:</label>
+        <input asp-for="ProductRequest.Price" type="number" step="0.01" />
+    </div>
+    <button type="submit">Salvar</button>
+</form>
+
+<hr />
+
+<h3>Produtos Cadastrados</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C")</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="id" value="@product.Id" />
+                        <button type="submit">Excluir</button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
